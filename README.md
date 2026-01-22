@@ -1,0 +1,28 @@
+# 🎨 Every Moment (모든 순간) Frontend
+
+사용자 가치관 기반 매칭 플랫폼 **Every Moment**의 React 프론트엔드입니다.
+
+## 🚀 배포 주소 (Live URLs)
+- **Frontend**: [https://everymomentmini2front.vercel.app](https://everymomentmini2front.vercel.app)
+- **Backend API**: [https://every-moment-back.onrender.com](https://every-moment-back.onrender.com)
+
+## 🔑 테스트 계정
+| 역할 | 이메일 | 비밀번호 | 비고 |
+|---|---|---|---|
+| **관리자** | `admin@example.com` | `AdminPassw0rd!` | 전체 채팅 관리 |
+| **데모 유저** | `demo@example.com` | `Passw0rd!` | 일반 매칭/설문 |
+
+## 🛠️ 기술 스택
+- **Framework**: React (Vite)
+- **Style**: CSS Modules, FontAwesome
+- **Communication**: Axios, WebSocket (STOMP)
+
+## ⚙️ 실행 방법
+1. **설치**
+   ```bash
+   npm install
+   ```
+2. **실행**
+   ```bash
+   npm run dev
+   ```

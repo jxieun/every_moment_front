@@ -184,7 +184,7 @@ export default function ChatPage() {
       const u = getUser();
       if (!at) return;
       try {
-        const res = await axios.get(`${apiBase}/chat/rooms/${selectedRoomId}/messages`, {
+        const res = await axios.get(`${apiBase}/api/chat/rooms/${selectedRoomId}/messages`, {
           headers: { Authorization: `Bearer ${at}` },
         });
         const hist = (res.data?.content || []).reverse();

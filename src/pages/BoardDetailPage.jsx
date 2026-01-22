@@ -76,7 +76,7 @@ export default function BoardDetailPage() {
     }
     try {
       const { data } = await axios.post(
-        `${apiBase}/chat/rooms`,
+        `${apiBase}/api/chat/rooms`,
         { opponentUserId },
         { headers: { Authorization: `Bearer ${getAccessToken()}` } }
       );
@@ -348,7 +348,7 @@ export default function BoardDetailPage() {
                     <button type="button" className="act" onClick={() => openChatWith(post.authorId)} title="운영자 문의">
                       운영자 문의
                     </button>
-                  )}                 
+                  )}
                   {showChatForPost && (
                     <button type="button" className="act" onClick={() => openChatWith(post.authorId)} title="채팅">
                       채팅
@@ -363,9 +363,9 @@ export default function BoardDetailPage() {
               {post.status && (
                 <div className={`bd-status ${post.status.toLowerCase()}`}>
                   상태: {post.status === "NORMAL" && "일반"}
-                        {post.status === "SWAP_REQUEST" && "스왑 요청"}
-                        {post.status === "SWAP_APPROVED" && "승인됨"}
-                        {post.status === "SWAP_REJECTED" && "거절됨"}
+                  {post.status === "SWAP_REQUEST" && "스왑 요청"}
+                  {post.status === "SWAP_APPROVED" && "승인됨"}
+                  {post.status === "SWAP_REJECTED" && "거절됨"}
                 </div>
               )}
             </div>
@@ -411,7 +411,7 @@ export default function BoardDetailPage() {
                           )}
                         </div>
                       </div>
-                      
+
                       <div className="cmt-body">{c.content}</div>
                     </div>
                   </div>

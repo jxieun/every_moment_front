@@ -36,7 +36,7 @@ const toSmokingLabel = (v) => {
 const fetchUserProfile = async (userId) => {
   const base = import.meta.env.VITE_API_BASE ?? "/api";
   try {
-    const res = await api.get(`${base}/school/users/${userId}`, {
+    const res = await api.get(`${base}/api/school/users/${userId}`, {
       // 401이어도 throw하지 않고 아래에서 분기
       validateStatus: () => true,
     });
@@ -183,7 +183,7 @@ export default function MatchResultsPage({ currentUser }) {
       }
       const base = import.meta.env.VITE_API_BASE ?? "/api";
       const { data } = await axios.post(
-        `${base}/chat/rooms`,
+        `${base}/api/chat/rooms`,
         { opponentUserId },
         { headers: { Authorization: `Bearer ${accessToken}` } }
       );
@@ -199,7 +199,7 @@ export default function MatchResultsPage({ currentUser }) {
   const handleLogout = async () => {
     try {
       const tokens = JSON.parse(localStorage.getItem("em_tokens") || "{}");
-    const accessToken = tokens?.accessToken;
+      const accessToken = tokens?.accessToken;
       const refreshToken = tokens?.refreshToken;
 
       const base = import.meta.env.VITE_API_BASE ?? "/api";
@@ -215,7 +215,7 @@ export default function MatchResultsPage({ currentUser }) {
               },
             }
           )
-          .catch(() => {});
+          .catch(() => { });
       }
 
       localStorage.removeItem("em_tokens");
@@ -227,7 +227,7 @@ export default function MatchResultsPage({ currentUser }) {
       try {
         const { authStore } = await import("../store/auth");
         authStore?.logout?.();
-      } catch {}
+      } catch { }
 
       navigate("/", { replace: true });
     } catch {
@@ -339,12 +339,12 @@ export default function MatchResultsPage({ currentUser }) {
               );
               const smokingLabel = toSmokingLabel(
                 it.smoking ??
-                  it.isSmoker ??
-                  it.smoker ??
-                  it.smokingStatus ??
-                  it.smokeYn ??
-                  it.smoke ??
-                  it.smokingHabit
+                it.isSmoker ??
+                it.smoker ??
+                it.smokingStatus ??
+                it.smokeYn ??
+                it.smoke ??
+                it.smokingHabit
               );
 
               return (
@@ -364,11 +364,9 @@ export default function MatchResultsPage({ currentUser }) {
                       onClick={async () => {
                         try {
                           const r = await getMatchResult(userId, matchUserId);
-                          const msg = `유사도: ${
-                            r?.similarity ?? r?.similarityScore ?? similarity ?? "-"
-                          }%\n상태: ${
-                            r?.status ?? r?.matchStatus ?? it?.status ?? "-"
-                          }`;
+                          const msg = `유사도: ${r?.similarity ?? r?.similarityScore ?? similarity ?? "-"
+                            }%\n상태: ${r?.status ?? r?.matchStatus ?? it?.status ?? "-"
+                            }`;
                           alert(msg);
                         } catch {
                           alert("상세 매칭 결과를 불러오지 못했어요.");

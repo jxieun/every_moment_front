@@ -159,10 +159,11 @@ export default function BoardDetailPage() {
   // ✅ 관리자 승인/거절
   async function handleApprove() {
     try {
-      await axios.post(`${apiBase}/posts/${id}/approve`, {}, {
+      await axios.post(`${apiBase}/api/posts/${id}/approve`, {}, {
         headers: { Authorization: `Bearer ${getAccessToken()}` },
       });
       await fetchPost();
+      alert("승인되었습니다.");
     } catch (e) {
       alert(e?.response?.data?.message || "승인 실패");
     }
@@ -170,10 +171,11 @@ export default function BoardDetailPage() {
 
   async function handleReject() {
     try {
-      await axios.post(`${apiBase}/posts/${id}/reject`, {}, {
+      await axios.post(`${apiBase}/api/posts/${id}/reject`, {}, {
         headers: { Authorization: `Bearer ${getAccessToken()}` },
       });
       await fetchPost();
+      alert("거절되었습니다.");
     } catch (e) {
       alert(e?.response?.data?.message || "거절 실패");
     }

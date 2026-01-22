@@ -31,7 +31,7 @@ function toArray(data) {
 export async function getRecommendations(userId) {
   if (!userId) return [];
   try {
-    const { data } = await api.get(`/match/recommendation/list/${userId}`);
+    const { data } = await api.get(`/api/match/recommendation/list/${userId}`);
     return toArray(data);
   } catch {
     return [];
@@ -42,7 +42,7 @@ export async function getRecommendations(userId) {
 export async function getMatchResult(userId, matchUserId) {
   if (!userId || !matchUserId) return {};
   try {
-    const { data } = await api.get(`/match/result/result/${userId}/${matchUserId}`);
+    const { data } = await api.get(`/api/match/result/result/${userId}/${matchUserId}`);
     return data || {};
   } catch {
     return {};

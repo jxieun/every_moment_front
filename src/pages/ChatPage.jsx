@@ -301,11 +301,11 @@ export default function ChatPage() {
 
   const apiPropose = async (proposerId, targetUserId) => {
     const body = { proposerId, targetUserId, proposalMessage: "룸메이트 요청" };
-    const res = await axios.post(`${apiBase}/match/propose`, body, { headers: authHeader() });
+    const res = await axios.post(`${apiBase}/api/match/propose`, body, { headers: authHeader() });
     return res?.data?.matchId ?? res?.data?.id ?? null;
   };
   const apiAccept = async (matchId) => {
-    await axios.post(`${apiBase}/match/accept/${matchId}`, null, { headers: authHeader() });
+    await axios.post(`${apiBase}/api/match/accept/${matchId}`, null, { headers: authHeader() });
     return true;
   };
   const apiReject = async (matchId) => {

@@ -17,6 +17,12 @@
 - **Style**: CSS Modules, FontAwesome
 - **Communication**: Axios, WebSocket (STOMP)
 
+## 🛠️ 주요 이슈 해결 내역 (Troubleshooting)
+- **API Prefix**: 모든 API 엔드포인트에 `/api` 프리픽스 추가 (401 오류 해결)
+- **WebSocket**: 실시간 채팅 및 매칭 상태 동기화 로직 개선
+- **IME Input**: 한글 입력 시 중복 메시지 전송 방지 (`isComposing` 체크)
+- **Admin Actions**: 관리자 게시글 승인/거절 기능 엔드포인트 수정
+
 ## ⚙️ 실행 방법
 1. **설치**
    ```bash

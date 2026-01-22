@@ -424,6 +424,16 @@ export default function ChatPage() {
     } finally { setSubmitting(false); }
   };
 
+  // 실시간 메시지 수신 시 상태 갱신 (상대방이 수락/거절 시 내 배지 업데이트)
+  useEffect(() => {
+    if (messages.length === 0) return;
+    const lastMsg = messages[messages.length - 1];
+    const type = inferType(lastMsg);
+    if (type === MSG.MATCH_ACCEPT || type === MSG.MATCH_DECLINE || type === MSG.MATCH_REQUEST) {
+      refreshMatchStatus();
+    }
+  }, [messages]);
+
   /* =======================
      렌더
   ======================= */

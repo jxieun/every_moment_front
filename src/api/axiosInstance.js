@@ -61,17 +61,17 @@ api.interceptors.response.use(
         // 최종 전송 경로: /api + 'api/school/auth/refresh' = /api/api/school/auth/refresh
         // (프록시가 첫 /api 를 제거 → 백엔드 /api/school/auth/refresh 로 도달)
         try {
-          resp = await api.post('school/auth/refresh', { refreshToken: rt });
+          resp = await api.post('/api/school/auth/refresh', { refreshToken: rt });
         } catch {
           try {
-            resp = await api.post('school/auth/refresh', null, {
+            resp = await api.post('/api/school/auth/refresh', null, {
               headers: {
                 Authorization: `Bearer ${rt}`,
                 'X-Refresh-Token': rt,
               },
             });
           } catch {
-            resp = await api.post('school/auth/refresh', {}, { withCredentials: true });
+            resp = await api.post('/api/school/auth/refresh', {}, { withCredentials: true });
           }
         }
 
@@ -83,7 +83,7 @@ api.interceptors.response.use(
         try {
           localStorage.setItem('accessToken', accessToken);
           if (newRT || rt) localStorage.setItem('refreshToken', newRT || rt);
-        } catch {}
+        } catch { }
 
         onRefreshed(accessToken);
 
@@ -92,7 +92,7 @@ api.interceptors.response.use(
         return api(original);
       } catch (e) {
         authStore.clear?.();
-        try { localStorage.removeItem('accessToken'); localStorage.removeItem('refreshToken'); } catch {}
+        try { localStorage.removeItem('accessToken'); localStorage.removeItem('refreshToken'); } catch { }
         throw e;
       } finally {
         isRefreshing = false;

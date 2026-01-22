@@ -599,7 +599,10 @@ export default function ChatPage() {
                   placeholder={isReadOnly ? "유저↔유저 채팅은 관리자 쓰기 금지" : "메시지 입력"}
                   value={newMessage}
                   onChange={(e) => setNewMessage(e.target.value)}
-                  onKeyDown={(e) => !isReadOnly && e.key === "Enter" && handleSendMessage()}
+                  onKeyDown={(e) => {
+                    if (e.nativeEvent.isComposing) return;
+                    if (!isReadOnly && e.key === "Enter") handleSendMessage();
+                  }}
                   disabled={submitting || isReadOnly}
                 />
                 <button

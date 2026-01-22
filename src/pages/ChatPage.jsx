@@ -309,11 +309,11 @@ export default function ChatPage() {
     return true;
   };
   const apiReject = async (matchId) => {
-    await axios.post(`${apiBase}/match/reject/${matchId}`, null, { headers: authHeader() });
+    await axios.post(`${apiBase}/api/match/reject/${matchId}`, null, { headers: authHeader() });
     return true;
   };
   const apiFetchResult = async (meId, otherId) => {
-    const { data } = await axios.get(`${apiBase}/match/result/result/${meId}/${otherId}`, { headers: authHeader() });
+    const { data } = await axios.get(`${apiBase}/api/match/result/result/${meId}/${otherId}`, { headers: authHeader() });
     return data || null;
   };
 

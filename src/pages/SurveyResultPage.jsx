@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import api from '../api/axiosInstance';
 import { authStore } from '../store/auth';
-import '../styles/SurveyResultPage.css';
+import '../styles/SurveyResult.css';
 
 
 function formatAnswer(key, raw) {
@@ -56,7 +56,7 @@ export default function SurveyResultPage() {
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState('');
 
-// ▼ 메뉴 드롭다운 상태 & 외부 클릭 닫기
+  // ▼ 메뉴 드롭다운 상태 & 외부 클릭 닫기
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
   useEffect(() => {
